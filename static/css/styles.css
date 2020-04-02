@@ -1,0 +1,308 @@
+@font-face {
+	font-family: "Oswald Regular";
+	local: "Oswald";
+	src: url("../fonts/Oswald-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Oswald Bold";
+	local: "Oswald";
+	src: url("../fonts/Oswald-Bold.ttf");
+}
+
+@font-face {
+	font-family: "Oswald Light";
+	local: "Oswald";
+	src: url("../fonts/Oswald-Light.ttf");
+}
+:root{
+	--light: #f8f9fa;
+	--dark: #000;
+	--blue: #007bff;
+	--dark-blue: #0056b3;
+	--ultra-light-blue: #e9ecef;
+}
+/*
+	url("static/fonts/Oswald-SemiBold.ttf");
+	url("static/fonts/Oswald-Bold.ttf"),
+		 url("static/fonts/Oswald-ExtraLight.ttf"),
+		 url("static/fonts/Oswald-Light.ttf"),
+		 url("static/fonts/Oswald-Medium.ttf"),
+*/
+
+body{
+	font-family: Oswald Regular;
+	background-color: var(--light);
+}
+
+*{transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out !important; font-family: Oswald Regular, Sans-Serif;}
+
+svg{transition: fill .25s ease-in-out !important;}
+
+button, input, optgroup, select, textarea, option{
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+input[type="checkbox"]{
+	display: none;
+}
+
+input[type="checkbox"] + label {
+    cursor: pointer;
+    padding-left: 0;
+}
+input[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    margin: 0 5px 0 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 0.2rem;
+
+    background-color: var(--light);
+    box-shadow: 0 0 0 0.2rem var(--light) inset;
+    border: 0.2rem solid var(--dark);
+
+    transition: all .25s;
+
+}
+input[type="checkbox"]:checked + label::before {
+    background-color: var(--dark);
+    box-shadow: 0 0 0 0.2rem var(--light) inset;
+    border: 0.2rem solid var(--dark);
+    transition: all .25s;
+}
+
+
+input[type="radio"]{
+	display: none;
+}
+
+input[type="radio"] + label{
+    cursor: pointer;
+}
+input[type="radio"] + label::before {
+    content: "";
+    display: inline-block;
+    margin: 0 5px 0 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+
+    background-color: var(--light);
+    box-shadow: 0 0 0 0.2rem var(--light) inset;
+    border: 0.2rem solid var(--dark);
+
+    transition: all .25s;
+
+}
+input[type="radio"]:checked + label::before {
+    background-color: var(--dark);
+    box-shadow: 0 0 0 0.2rem var(--light) inset;
+    border: 0.2rem solid var(--dark);
+    transition: all .25s;
+}
+
+
+.form-bar a{
+	margin-left: 1em;
+	max-height: 100%;
+}
+
+.form-control-file{
+	font-size: 75%;
+	width: 0px;
+	height: 0px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 10123;
+	z-index: -1;
+}
+
+.input-file *{
+	cursor: pointer;
+}
+
+.file-choose{
+	display: block;
+	background-color: var(--blue);
+	color: var(--light);
+	margin-top: 0.2em;
+	text-align: center;
+	border-radius: .25rem;
+}
+
+.file-choose:hover{
+	background-color: var(--dark-blue);
+}
+
+.form-bar a:hover svg{
+	fill: var(--dark-blue);
+}
+
+.font-150{
+	font-size: 150%;
+}
+
+.form-control{
+	border: none;
+	box-shadow: none;
+	box-shadow: 0 0 1px var(--dark);
+}
+
+.form-control:focus{
+	border: none;
+	box-shadow: 0 0 5px var(--dark);
+}
+
+form .row .col *:focus{
+	border: none;
+	box-shadow: none;
+	box-shadow: 0 0 1px var(--dark);
+}
+
+form .row .col *:focus{
+	border: none;
+	box-shadow: 0 0 5px var(--dark);
+}
+
+.form-bar a:active svg{
+	fill: var(--dark);
+}
+
+.row{
+	margin-bottom: 1.5em;
+}
+
+.light-head{
+	background-color: var(--light);
+}
+	
+.form-bar a svg{
+	fill: var(--blue);
+	padding: 0;
+	height: 1.75rem;
+}
+
+.form-bar a svg *:not(.svg-background-item){
+	fill: var(--light);
+}
+
+.header{
+	box-shadow: 0 0 5px var(--dark);
+	font-family: Oswald Bold;
+	position: sticky;
+}
+
+.info-button{
+	background-color: var(--blue);
+	border: none;
+	color: var(--light) !important;
+}
+
+.info-button:hover{
+	background-color: var(--dark-blue);
+	border: none;
+}
+
+.info-button:focus, .info-button:active{
+	background-color: var(--dark) !important;
+	border: none;
+	box-shadow: none;
+}
+
+
+.imager-200{
+	width: 200px;
+	height: 200px;
+}
+
+.bg-image{
+	background-repeat: no-repeat;
+	width: 100%;
+	border-radius: 0px;
+	background-size: cover;
+	color: var(--light);
+	min-height: 300px;
+
+	display: flex;
+
+	text-align: center;
+    vertical-align: middle;
+}
+
+.bg-image div{
+	margin: auto;
+}
+
+.dark-bg-text{
+	background-color: var(--dark);
+	color: var(--light);
+	padding: 0.2em;
+}
+
+.card{
+	min-width: 30%;
+	display: inline-block;
+	margin-bottom: 2em !important;
+}
+
+.card-body{
+	text-align: center;
+    vertical-align: middle;
+}
+
+.card-header{
+	font-family: Oswald Bold;
+	background-color: var(--dark);
+	color: var(--light);
+}
+
+.active{
+	border-bottom: 3px solid #333 !important;
+}
+
+.active > .nav-link{
+	color: var(--dark) !important;
+}
+
+.nav-link:hover{
+	background-color: #111;
+	color: var(--light) !important;
+}
+
+
+.nav-item{
+	margin-left: 0.5em;
+	border-bottom: 3px solid transparent;
+	background-color: inherit;
+}
+
+.main{
+	display: block;
+	width: 80%;
+	min-height: 80vh;
+}
+
+.footer{
+	min-height: 20vh;
+	bottom: 0px; 
+	display: block;
+	position: relative;
+	color: var(--light);
+	background-color: var(--dark);
+}
+
+#footer a{
+	color: var(--blue);
+	text-decoration: none;
+	text-decoration-color: var(--dark-blue);
+}
+#footer a:hover{
+	color: var(--dark-blue);
+	text-decoration: underline;
+	transition: all 0.2s ease;
+}

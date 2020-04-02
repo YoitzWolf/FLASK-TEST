@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+
+{% block header %}
+	<nav class="jumbotron bg-image" id="header" style="background-image: url({{h_image}})">
+
+	    <div class="container-fluid">
+	      <h1>{{page_header}}</h1>
+	      <p class="lead text-muted ">
+	      	<span class="dark-bg-text">{{page_header_text}}</span>
+	      </p>
+	      <!---
+	      <p>
+	        <a href="#" class="btn btn-primary my-2">Main call to action</a>
+	        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+	      </p>
+	      --->
+
+	    </div>
+
+  </nav>
+{% endblock header %}
+
+{% block content %}
+	<div class="card-deck">
+	    <!-- CARD 1 -->
+	    <div class="card">
+	    	<div class="card-header navbar">
+	    		<span >Mars Misson</span>
+	    		<form class="form-inline mt-2 mt-md-0 form-bar">
+			        <a class="btn">
+			        	
+			        	<svg class="bi bi-info-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+						  <path class="svg-background-item" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+						  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+						  <circle cx="8" cy="4.5" r="1"/>
+						</svg>
+
+			        </a>
+			        <a class="btn info-button" href="/test-questionary">Register</a>
+			    </form>
+	    	</div>
+		    <div class="card-body">
+		        <p class="card-text">Mars Colonisation mission</p>
+
+		        <img src="https://pngimg.com/uploads/mars_planet/mars_planet_PNG36.png" alt="Mars" class="rounded-circle imager-200">
+		    </div>
+	    </div>
+	 	
+
+
+	</div>
+	<hr>
+{% endblock %}

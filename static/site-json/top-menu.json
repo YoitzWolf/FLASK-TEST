@@ -1,0 +1,62 @@
+{
+	"menu": [
+		{
+			"text": "Home",
+			"tag": "li",
+			"tag_attributes": {
+				"id": "Home",
+				"class": "nav-item"
+			},
+
+			"link_attributes": {
+				"class": "nav-link",
+				"href": "/"
+			}
+
+		},
+
+		{
+			"text": "Missions",
+			"tag": "li",
+			"tag_attributes": {
+				"id": "Missions",
+				"class": "nav-item"
+			},
+
+			"link_attributes": {
+				"class": "nav-link",
+				"href": "/mission-list"
+			}
+
+		},
+
+		{
+			"text": "Promotion",
+			
+			"tag": "li",
+			"tag_attributes": {
+				"id": "Promotion",
+				"class": "nav-item"
+			},
+			
+			"link_attributes": {
+				"class": "nav-link",
+				"href": "/promotion"
+			}
+		},
+
+		{
+			"text": "Registration",
+			"tag": "li",
+			"tag_attributes": {
+				"id": "Registration",
+				"class": "nav-item"
+			},
+			
+			"link_attributes": {
+				"class": "nav-link",
+				"href": "/astronaut"
+			}
+		}
+	]
+}

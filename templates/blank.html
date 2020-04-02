@@ -1,0 +1,177 @@
+{% extends "main.html" %}
+
+{% block header %}
+	<nav class="jumbotron light-head" id="header">
+
+	    <div class="container-fluid">
+	      <h1>{{page_header}}</h1>
+	      <p class="lead text-muted ">
+	      	<span class="dark-bg-text">{{page_header_text}}</span>
+	      </p>
+	    </div>
+  </nav>
+{% endblock header %}
+
+{% block content %}
+	<div class="container">
+		<hr>
+		<form class="font-150">
+			<div class="row">
+		        <div class="col">
+		           	<label for="firstName">Имя</label>
+		           	<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+		           	<div class="invalid-feedback">
+		            	Недопустимое имя.
+		           	</div>
+		        </div>
+		        <div class="col">
+		           	<label for="lastName">Фамилия</label>
+		           	<input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+		           	<div class="invalid-feedback">
+		            	Недопустимая Фамилия.
+		        	</div>
+		        </div>
+        	</div>
+
+        	<div class="row">
+		        <div class="col">
+		           	<input type="text" class="form-control" id="firstName" placeholder="e-mail adress" value="" required="">
+		           	<div class="invalid-feedback">
+		            	Invalid adress.
+		           	</div>
+		        </div>
+        	</div>
+
+        	<div class="row">
+        		<div class="col col-md-5">
+		            <label for="country">Выберите Ваш уровень Образования</label>
+		            <select class="custom-select" id="education" required="">
+		            	<option>Начальное</option>
+		            	<option>Среднее</option>
+		            	<option>Высшее</option>
+		            </select>
+		            <div class="invalid-feedback">
+		            	Некорректно
+		            </div>
+		        </div>
+
+		        <div class="col input-file">
+					<label>Фотография</label>
+		            <input type="file" name="file-1[]" id="file-1" class="form-control-file" data-multiple-caption="{count} files selected" multiple="">
+		            <label for="file-1" class="file-choose">
+						<span class="text-center">Choose File</span>
+					</label>
+
+		            <div class="invalid-feedback">
+		            	Некорректно
+		            </div>
+		        </div>
+        	</div>
+
+        	<div class="row">
+			    <div class="col custom-checkbox">
+			    	<input id="pro-1" type="checkbox" class="checkbox" />
+					<label for="pro-1">Инженер-исследователь</label>
+			    </div>
+			    <div class="col custom-checkbox">
+			    	<input id="pro-2" type="checkbox" class="checkbox" />
+					<label for="pro-2">Пилот</label>
+			    </div>
+			    <div class="col custom-checkbox">
+			    	<input id="pro-3" type="checkbox" class="checkbox" />
+					<label for="pro-3">Строитель</label>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col custom-checkbox">
+			    	<input id="pro-4" type="checkbox" class="checkbox" />
+					<label for="pro-4">Экзобиолог</label>
+			    </div>
+				<div class="col custom-checkbox">
+			    	<input id="pro-5" type="checkbox" class="checkbox" />
+					<label for="pro-5">Врач</label>
+			    </div>
+			    <div class="col custom-checkbox">
+			    	<input id="pro-6" type="checkbox" class="checkbox" />
+					<label for="pro-6">Инженер по терраформированию</label>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col custom-checkbox">
+			    	<input id="pro-7" type="checkbox" class="checkbox" />
+					<label for="pro-7">Климатолог</label>
+			    </div>
+			    <div class="col custom-checkbox">
+			    	<input id="pro-8" type="checkbox" class="checkbox" />
+					<label for="pro-8">Специалист по радиационной защите</label>
+			    </div>
+			    <div class="col custom-checkbox">
+			    	<input id="pro-9" type="checkbox" class="checkbox" />
+					<label for="pro-9">Астрогеолог</label>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col custom-checkbox">
+			    	<input id="pro-10" type="checkbox" class="checkbox" />
+					<label for="pro-10">Гляциолог</label>
+			    </div>
+			    <div class="col custom-checkbox">
+			    	<input id="pro-11" type="checkbox" class="checkbox" />
+					<label for="pro-11">Инженер жизнеобеспечения</label>
+			    </div>
+			    <div class="col custom-checkbox">
+			    	<input id="pro-12" type="checkbox" class="checkbox" />
+					<label for="pro-12">Метеоролог</label>
+			    </div>
+			</div>
+
+			<div class="row">
+				<dev class="col">
+					<label>Ваш пол</label>
+				</dev>
+				<div class="col custom-radio">
+				   	<input id="man" type="radio" class="radio" value="man" name="mow" />
+					<label for="man">Man</label>
+				   </div>
+				   <div class="col custom-radio">
+					<input id="woman" type="radio" class="radio" value="woman"  checked="checked" name="mow" />
+					<label for="woman">Woman</label>
+				   </div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label>Расскажите о своей мотивации</label>
+					<textarea class="form-control" id="about" rows="3" name="about"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col custom-checkbox">
+			    	<input id="mars" type="checkbox" class="checkbox" />
+					<label for="mars">Готовы ли вы остаться на Марсе?</label>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col btn info-button">
+					Commit
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr><br><br><br>
+	<script type="text/javascript">
+		var inputs = document.querySelectorAll('.form-control-file');
+		Array.prototype.forEach.call(inputs, function(input){
+		  var label	 = input.nextElementSibling,
+		      labelVal = label.innerHTML;  input.addEventListener('change', function(e){
+		    var fileName = '';
+		    if( this.files && this.files.length > 1 )
+		      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+		    else
+		      fileName = e.target.value.split( '\\' ).pop();		if( fileName )
+		      label.querySelector( 'span' ).innerHTML = fileName;
+		    else
+		      label.innerHTML = labelVal;
+			});
+		});
+	</script>
+{% endblock %}

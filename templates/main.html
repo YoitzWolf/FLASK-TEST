@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+{% block head%}
+<head>
+	
+		<title>{{title}}</title>
+		<meta name="viewport\" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="./static/css/styles.css">
+		<link rel="shortcut icon" href="./static/img/favicon.ico" type="image/x-icon">
+</head>
+{% endblock %}
+
+<body>
+		{% block bar %}
+		<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light header" id="topBar">
+
+			<a class="navbar-brand" href="/">Interntional Colonisation Agency</a>
+
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+
+			  	<ul class="navbar-nav mr-auto ">
+
+					{{menu|safe}}
+
+			  	</ul>
+
+			</div>
+
+		</nav>
+		{% endblock bar %}
+
+	{% block header %}
+
+  	{% endblock header %}
+	   
+
+	{% block main %}
+	<main class="container main" id="content" role="main">
+		{{error|safe}}
+		<br>
+		{% block content %}
+			
+		{% endblock content %}
+		
+	</main>
+	{% endblock main %}
+
+	<nav class="footer mt-auto py-3">
+		<div class="container" id="footer">
+			<span>
+				{% block footer_content %}
+		        &copy; Copyright 2020 by <a href="/">Yoitz</a>
+		        {% endblock footer_content %}
+			</span>
+		</div>
+	</nav>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">	
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
+
+  </body>
+</body>
+</html>
