@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+
+{% block header %}
+	<nav class="jumbotron light-head" id="header">
+
+	    <div class="container-fluid">
+	      <h1>Результаты отбора</h1>
+	      <p class="lead text-muted ">
+	      	<span class="dark-bg-text">
+	      		Рейтинг пользователя 
+	      		<span class="text-blue">{{user}}</span>
+	      	</span>
+	      </p>
+	    </div>
+  	</nav>
+{% endblock header %}
+
+{% block content %}
+	<div class="container">
+
+		<h2>Этап отбора: {{level}}</h2>
+		<h4 class="alert alert-primary">
+			Рейтинг: {{rate}}
+		</h4>
+
+	</div>
+	<br><br><br>
+{% endblock %}

@@ -23,6 +23,13 @@ def quest():
 	page_header_text = "Анкета претендента на участие в миссии ICA"
 	return flask.render_template("blank.html", title="Astronaut Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
 
+
+@app.route('/results/<string:nickname>/<int:level>/<float:raiting>')
+def result_viewer(nickname=None, level=0, raiting=0):
+	menu = readMenu("./static/site-json/top-menu.json")
+	return flask.render_template("rate-view.html", title="Result Blank", user=nickname, level=level, rate=raiting, menu=menu);
+
+
 @app.route('/choice/<string:planet>')
 def added_variant(planet=None):
 	menu = readMenu("./static/site-json/top-menu.json")
@@ -42,6 +49,8 @@ def added_variant(planet=None):
 
 	'''
 	return flask.render_template("planet-variant-1.html", planet=planet, data=data, title="Planet Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
+
+
 
 @app.route('/choice')
 def add_variant():

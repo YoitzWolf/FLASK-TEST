@@ -144,6 +144,10 @@ input[type="radio"]:checked + label::before {
 	fill: var(--dark-blue);
 }
 
+.text-blue{
+	color: var(--blue);
+}
+
 .font-150{
 	font-size: 150%;
 }
