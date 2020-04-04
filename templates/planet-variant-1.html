@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block header %}
+	<nav class="jumbotron light-head" id="header">
+
+	    <div class="container-fluid">
+	      <h1>{{page_header}}</h1>
+	      <p class="lead text-muted ">
+	      	<span class="dark-bg-text">{{page_header_text}}</span>
+	      </p>
+	    </div>
+  	</nav>
+{% endblock header %}
+
+{% block content %}
+	<div class="container">
+		<h1>Planet: {{planet}}</h1>
+		<hr>
+		{{data|safe}}
+	</div>
+	<br><br><br>
+{% endblock %}

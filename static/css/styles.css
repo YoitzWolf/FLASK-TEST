@@ -37,6 +37,7 @@ body{
 
 *{transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out !important; font-family: Oswald Regular, Sans-Serif;}
 
+a{cursor: pointer;}
 svg{transition: fill .25s ease-in-out !important;}
 
 button, input, optgroup, select, textarea, option{
@@ -218,6 +219,13 @@ form .row .col *:focus{
 .imager-200{
 	width: 200px;
 	height: 200px;
+}
+
+svg.imager-200{
+	fill: var(--blue);
+}
+a:hover svg.imager-200{
+	fill: var(--dark-blue);
 }
 
 .bg-image{

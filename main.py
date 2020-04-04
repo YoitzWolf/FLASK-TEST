@@ -5,7 +5,7 @@ from static.modules.config import Config
 
 
 app = flask.Flask(__name__)
-app.config.from_object(Config)
+#app.config.from_object(Config)
 
 @app.route('/')
 def main():
@@ -18,17 +18,42 @@ def main():
 
 @app.route('/test-questionary')
 def quest():
-
 	menu = readMenu("./static/site-json/top-menu.json")
 	page_header = "Apllicant Blank Form №.a001"
 	page_header_text = "Анкета претендента на участие в миссии ICA"
 	return flask.render_template("blank.html", title="Astronaut Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
 
+@app.route('/choice/<string:planet>')
+def added_variant(planet=None):
+	menu = readMenu("./static/site-json/top-menu.json")
+	page_header = "Mission Blank №.1"
+	page_header_text = "Банк идей будущих миссии ICA"
+	data = '''
+		<h2>Idea</h2>
+		<h4 class="alert alert-primary">
+			Хорошая планета
+		</h4>
+		<h4 class="alert alert-primary">
+			Ресурсы есть, наверное...
+		</h4>
+		<h4 class="alert alert-primary">
+			А еще там жизнь есть, возможно..
+		</h4>
+
+	'''
+	return flask.render_template("planet-variant-1.html", planet=planet, data=data, title="Planet Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
+
+@app.route('/choice')
+def add_variant():
+	menu = readMenu("./static/site-json/top-menu.json")
+	page_header = "New Mission Blank Form №.1"
+	page_header_text = "Анкета предложения новой миссии ICA"
+	return flask.render_template("planet-blank-1.html", title="New Planet Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
 
 @app.errorhandler(404)
 def no_such_page(error):
 	menu = readMenu("./static/site-json/top-menu.json")
-	return flask.render_template("main.html", title="Error 404", name='Interntional Colonisation Agency', menu=menu, error=f"<h1>No such page!</h1><h5>Error: {error}</h5>"), error;
+	return flask.render_template("main.html", title="Error 404", name='Interntional Colonisation Agency', menu=menu, error=f"<h1>No such page!</h1><h5>Error: {error}</h5>")
 
 '''
 @app.route('/')

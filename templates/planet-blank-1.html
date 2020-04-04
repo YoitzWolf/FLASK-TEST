@@ -1,0 +1,86 @@
+{% extends "main.html" %}
+
+{% block header %}
+	<nav class="jumbotron light-head" id="header">
+
+	    <div class="container-fluid">
+	      <h1>{{page_header}}</h1>
+	      <p class="lead text-muted ">
+	      	<span class="dark-bg-text">{{page_header_text}}</span>
+	      </p>
+	    </div>
+  	</nav>
+{% endblock header %}
+
+{% block content %}
+	<div class="container">
+		<hr>
+		<form class="font-150">
+			<div class="row">
+		        <div class="col">
+		           	<label for="firstName">Имя</label>
+		           	<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+		           	<div class="invalid-feedback">
+		            	Недопустимое имя.
+		           	</div>
+		        </div>
+		        <div class="col">
+		           	<label for="lastName">Фамилия</label>
+		           	<input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+		           	<div class="invalid-feedback">
+		            	Недопустимая Фамилия.
+		        	</div>
+		        </div>
+        	</div>
+
+        	<div class="row">
+		        <div class="col">
+		           	<input type="text" class="form-control" id="firstName" placeholder="e-mail adress" value="" required="">
+		           	<div class="invalid-feedback">
+		            	Invalid adress.
+		           	</div>
+		        </div>
+        	</div>
+
+        	<div class="row">
+		        <div class="col">
+		           	<label for="firstName">Планета</label>
+		           	<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+		           	<div class="invalid-feedback">
+		            	Error
+		           	</div>
+		        </div>
+        	</div>
+
+			<div class="row">
+				<div class="col">
+					<label>Расскажите о своей идее</label>
+					<textarea class="form-control" id="about" rows="3" name="about"></textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col btn info-button">
+					Commit
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr><br><br><br>
+	<script type="text/javascript">
+		var inputs = document.querySelectorAll('.form-control-file');
+		Array.prototype.forEach.call(inputs, function(input){
+		  var label	 = input.nextElementSibling,
+		      labelVal = label.innerHTML;  input.addEventListener('change', function(e){
+		    var fileName = '';
+		    if( this.files && this.files.length > 1 )
+		      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+		    else
+		      fileName = e.target.value.split( '\\' ).pop();		if( fileName )
+		      label.querySelector( 'span' ).innerHTML = fileName;
+		    else
+		      label.innerHTML = labelVal;
+			});
+		});
+	</script>
+{% endblock %}
