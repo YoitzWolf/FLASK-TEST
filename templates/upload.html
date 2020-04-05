@@ -1,0 +1,68 @@
+{% extends "main.html" %}
+
+{% block header %}
+	<nav class="jumbotron light-head" id="header">
+
+	    <div class="container-fluid row" style="margin-bottom: 0.5em;">
+
+	    	<div class="col col-md-2">
+			    <h1>{{page_header}}</h1>
+			    <p class="lead text-muted ">
+			    	<span class="dark-bg-text">{{page_header_text}}</span>
+			    </p>
+			</div>
+
+	    </div>
+
+  	</nav>
+{% endblock header %}
+
+{% block content %}
+	<div class="container">
+		<form class="font-150" method="post" enctype="multipart/form-data">
+        	<div class="row">
+
+		        <div class="col input-file">
+					<label>Фотография</label>
+		            <input type="file" name="photo" class="form-control-file" multiple="false" id="photo"
+		            onchange="document.getElementById('test-image').src = window.URL.createObjectURL(this.files[0]); document.getElementById('test-image').style['display']='block'">
+
+		            <label for="photo" class="file-choose">
+						<span class="text-center">Choose File</span>
+					</label>
+					<img id="test-image" class="imager-auto-width hidden" src="#" alt="" />
+		            <div class="invalid-feedback">
+		            	Некорректно
+		            </div>
+
+		            <button id="commit" class="col btn info-button" type="submit">
+						Commit
+					</button>
+		        </div>
+
+
+        	</div>
+		</form>
+				<span class="text-center font-150">Last Photos</span>
+		       	<div class="row">
+					{{images|safe}}
+				</div>
+	</div>
+	<hr><br><br><br>
+	<script type="text/javascript">
+		var inputs = document.querySelectorAll('.form-control-file');
+		Array.prototype.forEach.call(inputs, function(input){
+		  	var label	 = input.nextElementSibling,
+		    	labelVal = label.innerHTML;  input.addEventListener('change', function(e){
+				    var fileName = '';
+				    if( this.files && this.files.length > 1 )
+				      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+				    else
+				      fileName = e.target.value.split( '\\' ).pop();		if( fileName )
+				      label.querySelector( 'span' ).innerHTML = fileName;
+				    else
+				      label.innerHTML = labelVal;
+				});
+		});
+	</script>
+{% endblock %}

@@ -15,30 +15,37 @@
 {% block content %}
 	<div class="container">
 		<hr>
-		<form class="font-150">
+		<form class="font-150" method="post" enctype="multipart/form-data">
 			<div class="row">
 		        <div class="col">
+
 		           	<label for="firstName">Имя</label>
-		           	<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+		           	<input id="name" name="name" type="text" class="form-control" placeholder="name" value="" required="">
 		           	<div class="invalid-feedback">
 		            	Недопустимое имя.
 		           	</div>
+		           	
 		        </div>
 		        <div class="col">
+
 		           	<label for="lastName">Фамилия</label>
-		           	<input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+		           	<input id="surname" name="surname" type="text" class="form-control" placeholder="surname" value="" required="">
 		           	<div class="invalid-feedback">
 		            	Недопустимая Фамилия.
 		        	</div>
+		        	
 		        </div>
         	</div>
 
         	<div class="row">
 		        <div class="col">
-		           	<input type="text" class="form-control" id="firstName" placeholder="e-mail adress" value="" required="">
+
+		        	
+		           	<input id="email" type="text" class="form-control" id="firstName" placeholder="e-mail adress" value="" required="">
 		           	<div class="invalid-feedback">
 		            	Invalid adress.
 		           	</div>
+		           	
 		        </div>
         	</div>
 
@@ -57,11 +64,14 @@
 
 		        <div class="col input-file">
 					<label>Фотография</label>
-		            <input type="file" name="file-1[]" id="file-1" class="form-control-file" data-multiple-caption="{count} files selected" multiple="">
-		            <label for="file-1" class="file-choose">
+
+		            <input type="file" name="photo" class="form-control-file" multiple="" id="photo"
+		            onchange="document.getElementById('test-image').src = window.URL.createObjectURL(this.files[0]); document.getElementById('test-image').style['display']='block'">
+
+		            <label for="photo" class="file-choose">
 						<span class="text-center">Choose File</span>
 					</label>
-
+					<img id="test-image" class="imager-200-height hidden" src="#" alt="" />
 		            <div class="invalid-feedback">
 		            	Некорректно
 		            </div>
@@ -133,15 +143,15 @@
 				   	<input id="man" type="radio" class="radio" value="man" name="mow" />
 					<label for="man">Man</label>
 				   </div>
-				   <div class="col custom-radio">
+				<div class="col custom-radio">
 					<input id="woman" type="radio" class="radio" value="woman"  checked="checked" name="mow" />
 					<label for="woman">Woman</label>
-				   </div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label>Расскажите о своей мотивации</label>
-					<textarea class="form-control" id="about" rows="3" name="about"></textarea>
+					<textarea id="motivation" class="form-control" id="about" rows="3" name="about"></textarea>
 				</div>
 			</div>
 			<div class="row">
@@ -151,9 +161,9 @@
 			    </div>
 			</div>
 			<div class="row">
-				<div class="col btn info-button">
+				<button id="commit" class="col btn info-button" type="submit">
 					Commit
-				</div>
+				</button>
 			</div>
 		</form>
 	</div>
@@ -161,17 +171,17 @@
 	<script type="text/javascript">
 		var inputs = document.querySelectorAll('.form-control-file');
 		Array.prototype.forEach.call(inputs, function(input){
-		  var label	 = input.nextElementSibling,
-		      labelVal = label.innerHTML;  input.addEventListener('change', function(e){
-		    var fileName = '';
-		    if( this.files && this.files.length > 1 )
-		      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-		    else
-		      fileName = e.target.value.split( '\\' ).pop();		if( fileName )
-		      label.querySelector( 'span' ).innerHTML = fileName;
-		    else
-		      label.innerHTML = labelVal;
-			});
+		  	var label	 = input.nextElementSibling,
+		    	labelVal = label.innerHTML;  input.addEventListener('change', function(e){
+				    var fileName = '';
+				    if( this.files && this.files.length > 1 )
+				      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+				    else
+				      fileName = e.target.value.split( '\\' ).pop();		if( fileName )
+				      label.querySelector( 'span' ).innerHTML = fileName;
+				    else
+				      label.innerHTML = labelVal;
+				});
 		});
 	</script>
 {% endblock %}

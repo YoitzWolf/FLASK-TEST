@@ -178,6 +178,24 @@ form .row .col *:focus{
 	fill: var(--dark);
 }
 
+.shadow-hover-dark:hover{
+	box-shadow: 0 0 0 0.2em var(--dark);
+}
+
+.shadow-hover-dark{
+	box-shadow: 0 0 0.5em 0em var(--dark);
+	border-radius: 0.5em;
+}
+
+.imager-200-height:hover{
+	height: 210px;
+	transition: all 0.5s !important;
+}
+
+.imager-200-height{
+	transition: all 0.5s !important;
+}
+
 .row{
 	margin-bottom: 1.5em;
 }
@@ -219,11 +237,28 @@ form .row .col *:focus{
 	box-shadow: none;
 }
 
+.hidden{
+	display: none;
+}
 
 .imager-200{
 	width: 200px;
 	height: 200px;
 }
+
+.imager-200-height{
+	height: 200px;
+}
+
+.imager-auto-width{
+	width: 100%;
+}
+
+.imager-auto-height{
+	height: 100%;
+}
+
+img{border-radius: 0.15em;}
 
 svg.imager-200{
 	fill: var(--blue);

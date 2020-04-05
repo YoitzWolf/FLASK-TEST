@@ -2,8 +2,11 @@
 import json
 import sys
 
-def readMenu(adress, activated="NO DATA ACT"):
+def readMenu(adress, activated="None", user=False):
 	document = ''
+	userfield = ''
+	data = ''
+
 	with open(adress, "r") as read_file:
 		data = json.load(read_file)
 
@@ -19,7 +22,18 @@ def readMenu(adress, activated="NO DATA ACT"):
 
 		document += f"</{item['tag']}>\n"
 
-	return document
+	if user:
+		pass
+	else:
+		userfield += (f"<{data['sign-menu']['unautorized']['tag']} {' '.join(['{}={}'.format(x, '%DOC%'+data['sign-menu']['unautorized']['tag_attributes'][x]+'%DOC%') for x in data['sign-menu']['unautorized']['tag_attributes']])} >\n").replace('%DOC%', '"')
+
+		userfield += (f"<a {' '.join(['{}=%DOC%{}%DOC%'.format(x, data['sign-menu']['unautorized']['link_attributes'][x]) for x in data['sign-menu']['unautorized']['link_attributes']])}>").replace('%DOC%', '"')
+
+		userfield += f"{data['sign-menu']['unautorized']['text']}</a>"
+
+		userfield += f"</{data['sign-menu']['unautorized']['tag']}>\n"
+
+	return document, userfield
 
 
 if __name__ == '__main__':

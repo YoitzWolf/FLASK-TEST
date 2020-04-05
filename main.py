@@ -1,38 +1,55 @@
 # -*- coding: utf-8 -*-
 import flask
-from static.modules.jsonReaders import *
-from static.modules.config import Config
+import os
+from static.modules.config import Config, Courier
+from werkzeug.utils import secure_filename
 
 
 app = flask.Flask(__name__)
-#app.config.from_object(Config)
+app.config.from_object(Config)
+
+courier = Courier()
 
 @app.route('/')
 def main():
-	menu = readMenu("./static/site-json/top-menu.json", activated="Home")
+	courier.reloadBar(menu_activated="Home", user=False)
+	menu = courier.get_fullmenu()
+
 	page_header = "Welcome to International Colonisation Agency!"
 	page_header_text = "Colonisation Center"
 	h_image = "./static/img/cosmos-1.jpg"
 	return flask.render_template("home.html", title="Colonisation Agency", page_header=page_header, page_header_text=page_header_text, h_image=h_image, menu=menu);
 
 
-@app.route('/test-questionary')
+@app.route('/test-questionary', methods=['GET', 'POST'])
 def quest():
-	menu = readMenu("./static/site-json/top-menu.json")
-	page_header = "Apllicant Blank Form №.a001"
-	page_header_text = "Анкета претендента на участие в миссии ICA"
-	return flask.render_template("blank.html", title="Astronaut Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
+	if flask.request.method == "GET":
+		courier.reloadBar(menu_activated="Registration", user=False)
+		menu = courier.get_fullmenu()
+
+		page_header = "Apllicant Blank Form №.a001"
+		page_header_text = "Анкета претендента на участие в миссии ICA"
+		return flask.render_template("blank.html", title="Astronaut Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
+
+	elif flask.request.method == 'POST':
+		print(flask.request.form.get("name"))
+		print(flask.request.form.get("surname"))
+		print(flask.request.files['photo'])
+		return "<h1>Confirm</h1>"
 
 
 @app.route('/results/<string:nickname>/<int:level>/<float:raiting>')
 def result_viewer(nickname=None, level=0, raiting=0):
-	menu = readMenu("./static/site-json/top-menu.json")
+	courier.reloadBar(menu_activated="None", user=False)
+	menu = courier.get_fullmenu()
 	return flask.render_template("rate-view.html", title="Result Blank", user=nickname, level=level, rate=raiting, menu=menu);
 
 
 @app.route('/choice/<string:planet>')
 def added_variant(planet=None):
-	menu = readMenu("./static/site-json/top-menu.json")
+	courier.reloadBar(menu_activated="None", user=False)
+	menu = courier.get_fullmenu()
+
 	page_header = "Mission Blank №.1"
 	page_header_text = "Банк идей будущих миссии ICA"
 	data = '''
@@ -47,21 +64,46 @@ def added_variant(planet=None):
 			А еще там жизнь есть, возможно..
 		</h4>
 
-	'''
+		'''
 	return flask.render_template("planet-variant-1.html", planet=planet, data=data, title="Planet Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
 
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+	if flask.request.method == 'GET':
+		courier.reloadBar(menu_activated="None", user=False)
+		menu = courier.get_fullmenu()
+
+		images = courier.get_uploaded_images("./static/uploads/.")
+
+		page_header = "Load Image"
+		page_header_text = "anonimous image loader"
+		return flask.render_template("upload.html", title="Image Blank", page_header=page_header, page_header_text=page_header_text, menu=menu, images=images);
+	elif flask.request.method == 'POST':
+		file = flask.request.files['photo']
+		if file.filename == '':
+			flask.flash('No selected file')
+			return flask.redirect(flask.request.url)
+		else:
+			filename = secure_filename(file.filename)
+			file.save("static/uploads/" + filename)
+			return flask.redirect(flask.url_for('upload'))
+		return "<h1>Confirm</h1>"
 
 
 @app.route('/choice')
 def add_variant():
-	menu = readMenu("./static/site-json/top-menu.json")
+	courier.reloadBar(menu_activated="None", user=False)
+	menu = courier.get_fullmenu()
+
 	page_header = "New Mission Blank Form №.1"
 	page_header_text = "Анкета предложения новой миссии ICA"
 	return flask.render_template("planet-blank-1.html", title="New Planet Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
 
 @app.errorhandler(404)
 def no_such_page(error):
-	menu = readMenu("./static/site-json/top-menu.json")
+	courier.reloadBar(menu_activated="None", user=False)
+	menu = courier.get_fullmenu()
+
 	return flask.render_template("main.html", title="Error 404", name='Interntional Colonisation Agency', menu=menu, error=f"<h1>No such page!</h1><h5>Error: {error}</h5>")
 
 '''
