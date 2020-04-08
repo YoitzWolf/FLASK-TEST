@@ -70,7 +70,7 @@ def added_variant(planet=None):
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
 	if flask.request.method == 'GET':
-		courier.reloadBar(menu_activated="None", user=False)
+		courier.reloadBar(menu_activated="Images", user=False)
 		menu = courier.get_fullmenu()
 
 		images = courier.get_uploaded_images("./static/uploads/.")
@@ -88,6 +88,20 @@ def upload():
 			file.save("static/uploads/" + filename)
 			return flask.redirect(flask.url_for('upload'))
 		return "<h1>Confirm</h1>"
+
+
+@app.route('/images')
+def image_viewer():
+	courier.reloadBar(menu_activated="Images", user=False)
+	menu = courier.get_fullmenu()
+	all_upl_images = courier.get_uploaded_images("./static/uploads/.")
+
+	caroucel = "1"#courier.get_caroucel("./static/uploads/.")
+
+	page_header = "Load Image"
+	page_header_text = "anonimous image loader"
+
+	return flask.render_template("image-view.html", title="Images", page_header=page_header, page_header_text=page_header_text, menu=menu, images_upl=all_upl_images, caroucel=caroucel);
 
 
 @app.route('/choice')

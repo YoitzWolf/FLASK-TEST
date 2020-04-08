@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+	
+
+{% block header %}
+	
+	<nav class="gallery" id="#myCarousel">
+		<div class="gallery-item">
+			<img id="img0" class="activated" src="/static/uploads/1400x579_3557_Landing_2d_sci_fi_cyberpunk_city_picture_image_digital_art.jpg">
+			<img id="img1" class="deactivated"  src="/static/uploads/205966.jpg">
+			<img id="img2" class="deactivated" src="/static/uploads/164aa4ee4c3533c38d36b78463c6829e.jpg">
+		</div>
+
+		<div class="gallery-shell">
+			<ul class="gallery-indicators">
+		    	<li data-target="#myCarousel" for="img0" onclick="caroucel_press(this)" data-slide-to="0" class="active"><a></a></li>
+		    	<li data-target="#myCarousel" for="img1" onclick="caroucel_press(this)" data-slide-to="1" class=""><a></a></li>
+		    	<li data-target="#myCarousel" for="img2" onclick="caroucel_press(this)" data-slide-to="2" class=""><a></a></li>
+		    </ul>
+		</div>
+
+	</nav>
+
+{% endblock header %}
+
+{% block content %}
+	<div class="container">
+
+		<span class="text-center font-150">Last Uploaded Photos</span>
+		    <div class="row">
+			{{images_upl|safe}}
+		</div>
+
+	</div>
+	<hr><br><br><br>
+	<script type="text/javascript">
+		var inputs = document.querySelectorAll('.form-control-file');
+		Array.prototype.forEach.call(inputs, function(input){
+		  	var label	 = input.nextElementSibling,
+		    	labelVal = label.innerHTML;  input.addEventListener('change', function(e){
+				    var fileName = '';
+				    if( this.files && this.files.length > 1 )
+				      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+				    else
+				      fileName = e.target.value.split( '\\' ).pop();		if( fileName )
+				      label.querySelector( 'span' ).innerHTML = fileName;
+				    else
+				      label.innerHTML = labelVal;
+				});
+		});
+	</script>
+{% endblock %}

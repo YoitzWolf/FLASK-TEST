@@ -25,9 +25,9 @@
 /*
 	url("static/fonts/Oswald-SemiBold.ttf");
 	url("static/fonts/Oswald-Bold.ttf"),
-		 url("static/fonts/Oswald-ExtraLight.ttf"),
-		 url("static/fonts/Oswald-Light.ttf"),
-		 url("static/fonts/Oswald-Medium.ttf"),
+	url("static/fonts/Oswald-ExtraLight.ttf"),
+	url("static/fonts/Oswald-Light.ttf"),
+	url("static/fonts/Oswald-Medium.ttf"),
 */
 
 body{
@@ -41,9 +41,9 @@ a{cursor: pointer;}
 svg{transition: fill .25s ease-in-out !important;}
 
 button, input, optgroup, select, textarea, option{
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
 }
 
 input[type="checkbox"]{
@@ -51,29 +51,29 @@ input[type="checkbox"]{
 }
 
 input[type="checkbox"] + label {
-    cursor: pointer;
-    padding-left: 0;
+	cursor: pointer;
+	padding-left: 0;
 }
 input[type="checkbox"] + label::before {
-    content: "";
-    display: inline-block;
-    margin: 0 5px 0 0;
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 0.2rem;
+	content: "";
+	display: inline-block;
+	margin: 0 5px 0 0;
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 0.2rem;
 
-    background-color: var(--light);
-    box-shadow: 0 0 0 0.2rem var(--light) inset;
-    border: 0.2rem solid var(--dark);
+	background-color: var(--light);
+	box-shadow: 0 0 0 0.2rem var(--light) inset;
+	border: 0.2rem solid var(--dark);
 
-    transition: all .25s;
+	transition: all .25s;
 
 }
 input[type="checkbox"]:checked + label::before {
-    background-color: var(--dark);
-    box-shadow: 0 0 0 0.2rem var(--light) inset;
-    border: 0.2rem solid var(--dark);
-    transition: all .25s;
+	background-color: var(--dark);
+	box-shadow: 0 0 0 0.2rem var(--light) inset;
+	border: 0.2rem solid var(--dark);
+	transition: all .25s;
 }
 
 
@@ -82,28 +82,28 @@ input[type="radio"]{
 }
 
 input[type="radio"] + label{
-    cursor: pointer;
+	cursor: pointer;
 }
 input[type="radio"] + label::before {
-    content: "";
-    display: inline-block;
-    margin: 0 5px 0 0;
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
+	content: "";
+	display: inline-block;
+	margin: 0 5px 0 0;
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 50%;
 
-    background-color: var(--light);
-    box-shadow: 0 0 0 0.2rem var(--light) inset;
-    border: 0.2rem solid var(--dark);
+	background-color: var(--light);
+	box-shadow: 0 0 0 0.2rem var(--light) inset;
+	border: 0.2rem solid var(--dark);
 
-    transition: all .25s;
+	transition: all .25s;
 
 }
 input[type="radio"]:checked + label::before {
-    background-color: var(--dark);
-    box-shadow: 0 0 0 0.2rem var(--light) inset;
-    border: 0.2rem solid var(--dark);
-    transition: all .25s;
+	background-color: var(--dark);
+	box-shadow: 0 0 0 0.2rem var(--light) inset;
+	border: 0.2rem solid var(--dark);
+	transition: all .25s;
 }
 
 
@@ -278,7 +278,7 @@ a:hover svg.imager-200{
 	display: flex;
 
 	text-align: center;
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .bg-image div{
@@ -299,7 +299,7 @@ a:hover svg.imager-200{
 
 .card-body{
 	text-align: center;
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .card-header{
@@ -352,4 +352,102 @@ a:hover svg.imager-200{
 	color: var(--dark-blue);
 	text-decoration: underline;
 	transition: all 0.2s ease;
+}
+
+.round-25{
+	width: 25px !important;
+	height: 25px !important;
+	
+	background-color: var(--dark) !important;
+}
+
+
+.gallery{
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 30rem;
+	margin-top: 1em;
+}
+
+
+.gallery-item{
+	width: 100%;
+	height: 100%;
+
+	
+	text-align:center; 
+	white-space:nowrap;
+	overflow:hidden;
+
+	/*display: inline;*/
+
+}
+
+.gallery-shell{
+	display: flex;
+	align-items: center;
+}
+
+.gallery-item img{
+	height: 100%;
+	border-radius: 1em;
+}
+
+.gallery-indicators{
+	list-style-type: none;
+	display: flex !important;
+	margin: auto;
+}
+
+.gallery-indicators li{
+	width: 1.5em;
+	height: 1.5em;
+	border-radius:50%;
+	margin: 0.5em;
+
+	background-color: var(--light);
+	box-shadow: 0 0 0 0.2rem var(--light) inset;
+	border: 0.2rem solid var(--dark);
+
+	cursor: pointer;
+}
+
+.gallery-indicators li.active{
+	background-color: var(--blue);
+	box-shadow: 0 0 0 0.2rem var(--light) inset;
+	border: 0.2rem solid var(--blue) !important;
+}
+
+.gallery-indicators li:not(.active):hover{
+	background-color: var(--dark);
+	box-shadow: 0 0 0 0.2rem var(--light) inset;
+	border: 0.2rem solid var(--dark);
+}
+
+.deactivated{
+	position:absolute;
+	top: 0;
+	visibility: hidden;
+	left: 0;
+	width: 0px;
+	height: 0px;
+}
+
+.activated{
+	animation-name: slide-in;
+	animation-duration: 2s;
+	/*animation-timing-function: ease;*/
+}
+
+@keyframes slide-in {
+  0% {
+  	margin-left: 50%;
+    opacity: 0%;
+  }
+  100% {
+  	margin: none;
+    opacity: 100%;
+  }
 }

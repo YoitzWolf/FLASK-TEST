@@ -20,7 +20,7 @@ class Courier(object):
 		data = os.listdir(path=path)
 		doc = ""
 		for i in data:
-			doc += f"<img alt='{i}'' title='{i}' class='imager-200-height shadow-hover-dark' style='margin:0.5em;' src='{path[:-1]+i}' >"
+			doc += f"<img alt='{i}' title='{i}' class='imager-200-height shadow-hover-dark' style='margin:0.5em;' src='{path[:-1]+i}' >"
 		return doc
 
 	def get_menu(self):
