@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+
+
+{% block bar %}
+
+	<nav class="navbar navbar-expand-md navbar-light bg-dark" id="topBar">
+
+			<a class="navbar-brand" href="#"><h1>Mars Mission</h1><h4>И на Марсе будут яблони цвести!</h4></a>
+
+
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+
+			  	<ul class="navbar-nav mr-auto ">
+
+			  	</ul>
+
+			  	<ul class="navbar-nav mt-md-auto">
+			  		{{ menu["menu"]|safe }}
+
+					{{ menu["userfield"]|safe }}
+
+			  	</ul>
+
+			</div>
+
+	</nav>
+
+{% endblock bar %}
+
+{% block content %}
+
+	<div class="container">
+		{% block mission_content %}
+		{% endblock mission_content %}
+		<hr>
+	</div>
+	<br><br><br>
+{% endblock %}

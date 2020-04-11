@@ -38,6 +38,9 @@ class Courier(object):
 	def reloadBar(self, menu_activated="None", user=False):
 		self.data['menu'], self.data['userfield'] = readMenu("./static/site-json/top-menu.json", activated=menu_activated, user=user)
 
+	def get_Home(self, planet, user=False):
+		return """<li id="Home" class="nav-item"><a class="nav-link" href="/">Home</a></li>"""
+
 	def __init__(self):
 		self.data = {}
 		self.reloadBar()

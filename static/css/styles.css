@@ -321,6 +321,15 @@ a:hover svg.imager-200{
 	color: var(--light) !important;
 }
 
+.bg-dark{
+	color: var(--light) !important;
+	background-color: var(--dark) !important;
+}
+
+.bg-dark *{
+	color: var(--light) !important;
+}
+
 
 .nav-item{
 	margin-left: 0.5em;

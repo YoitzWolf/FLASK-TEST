@@ -113,12 +113,23 @@ def add_variant():
 	page_header_text = "Анкета предложения новой миссии ICA"
 	return flask.render_template("planet-blank-1.html", title="New Planet Blank", page_header=page_header, page_header_text=page_header_text, menu=menu);
 
+
 @app.errorhandler(404)
 def no_such_page(error):
 	courier.reloadBar(menu_activated="None", user=False)
 	menu = courier.get_fullmenu()
 
 	return flask.render_template("main.html", title="Error 404", name='Interntional Colonisation Agency', menu=menu, error=f"<h1>No such page!</h1><h5>Error: {error}</h5>")
+
+
+@app.route('/mission-test')
+def planet(planet=None):
+	courier.reloadBar(menu_activated="None", user=False)
+	menu = courier.get_fullmenu()
+	menu["menu"] = courier.get_Home(planet=planet, user=False)
+	
+	return flask.render_template("mission-base.html", title="Mission", menu=menu, planet=planet);
+
 
 '''
 @app.route('/')
