@@ -200,6 +200,13 @@ form .row .col *:focus{
 	margin-bottom: 1.5em;
 }
 
+.login-form{
+	width: 40%;
+	margin: auto;
+	display: block;
+	margin-top: 5em;
+}
+
 .light-head{
 	background-color: var(--light);
 }

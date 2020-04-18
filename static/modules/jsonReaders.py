@@ -23,7 +23,14 @@ def readMenu(adress, activated="None", user=False):
 		document += f"</{item['tag']}>\n"
 
 	if user:
-		pass
+		userfield += (f"<{data['sign-menu']['autorized']['tag']} {' '.join(['{}={}'.format(x, '%DOC%'+data['sign-menu']['autorized']['tag_attributes'][x]+'%DOC%') for x in data['sign-menu']['autorized']['tag_attributes']])} >\n").replace('%DOC%', '"')
+
+		userfield += (f"<a {' '.join(['{}=%DOC%{}%DOC%'.format(x, data['sign-menu']['autorized']['link_attributes'][x]) for x in data['sign-menu']['autorized']['link_attributes']])}>").replace('%DOC%', '"')
+
+		userfield += f"{data['sign-menu']['autorized']['text']}</a>"
+
+		userfield += f"</{data['sign-menu']['autorized']['tag']}>\n"
+		
 	else:
 		userfield += (f"<{data['sign-menu']['unautorized']['tag']} {' '.join(['{}={}'.format(x, '%DOC%'+data['sign-menu']['unautorized']['tag_attributes'][x]+'%DOC%') for x in data['sign-menu']['unautorized']['tag_attributes']])} >\n").replace('%DOC%', '"')
 

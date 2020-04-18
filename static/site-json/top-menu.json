@@ -62,16 +62,16 @@
 
 	"sign-menu": {
 		"autorized": {
-			"text": "{username}",
+			"text": "Logout",
 			"tag": "li",
 			"tag_attributes": {
-				"id": "user",
+				"id": "logout",
 				"class": "nav-item"
 			},
 			
 			"link_attributes": {
-				"class": "nav-link user-in-bar",
-				"href": "/cabinete"
+				"class": "btn info-button",
+				"href": "/logout"
 			}
 		},
 
@@ -85,7 +85,7 @@
 			
 			"link_attributes": {
 				"class": "btn info-button",
-				"href": "/sign-in"
+				"href": "/login"
 			}
 		}
 	}

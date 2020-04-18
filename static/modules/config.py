@@ -9,9 +9,8 @@ class Config(object):
     FLASK_DEBUG = 1
     DEBUG = True
 
-
 class Courier(object):
-	""" <<Courier>> site-data manager """
+	""" <<Courier>> site-data _JSON_to_HTML_ and _Popular_HTML_ manager """
 
 	def setConfigByKey(self, key, value):
 		self.__dict__[key] = value
@@ -38,8 +37,13 @@ class Courier(object):
 	def reloadBar(self, menu_activated="None", user=False):
 		self.data['menu'], self.data['userfield'] = readMenu("./static/site-json/top-menu.json", activated=menu_activated, user=user)
 
-	def get_Home(self, planet, user=False):
-		return """<li id="Home" class="nav-item"><a class="nav-link" href="/">Home</a></li>"""
+	def get_Home(self):
+		return """<li id="Home" class="nav-item"><a class="nav-link" href="/">Home</a></li>""" # usual Home
+
+	def get_BarLink_To(self, link, text=None):
+		if text is None: text = link
+		return f"""<li id="Home" class="nav-item"><a class="nav-link" href="{link}">{text}</a></li>""" # usual Home		
+	
 
 	def __init__(self):
 		self.data = {}
