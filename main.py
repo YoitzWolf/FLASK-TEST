@@ -291,7 +291,10 @@ if __name__ == '__main__':
 
 		print("Add Job")
 		
-		firstArbeit()
+		try:
+			firstArbeit()
+		except Exception as e:
+			print(e)
 
 		print("Completed")
 
