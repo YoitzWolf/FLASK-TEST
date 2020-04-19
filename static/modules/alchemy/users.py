@@ -5,7 +5,6 @@ import sqlalchemy.ext.declarative as dec
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-
 from .session import SqlAlchemyBase
 
 
@@ -29,7 +28,7 @@ class User(UserMixin, SqlAlchemyBase):
 	modified_date = sqlalchemy.Column(
 		sqlalchemy.DateTime, default=datetime.datetime.now)
 
-	# jobs = orm.relation("Jobs", back_populates='user')
+	jobs = orm.relation("Jobs", back_populates='user')
 
 	def set_password(self, password):
 		self.password_hash = generate_password_hash(password)
@@ -39,7 +38,5 @@ class User(UserMixin, SqlAlchemyBase):
 
 
 def userFabric(data) -> User:
-	user = User
-	user['login'] = data['login']
-	self.set_password("password");
+	user = User()
 	return user

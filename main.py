@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
-import flask
-import flask_wtf as wtf
-import flask_login as flogin
-from flask_login import current_user, login_user
-import os
-from static.modules.config import Config, Courier
-from static.modules.alchemy.users import User, userFabric
-from werkzeug.utils import secure_filename
+import flask 						as flask
+import flask_wtf 					as wtf
+import flask_login 					as flogin
+from flask_login 					import current_user, login_user
+import os 							as os
+from static.modules.config 			import Config, Courier
+from static.modules.alchemy.users 	import User
+from static.modules.alchemy.jobs  	import Jobs
 
-from static.modules.alchemy import session as Session
+from werkzeug.utils 				import secure_filename
+
+from static.modules.alchemy 		import session as Session
 
 ROOT = True
 
@@ -256,15 +258,42 @@ def addCaptainAndThreeRandomUsers():
 
 	session.commit()
 
+def firstArbeit():
+
+	session = Session.create_session()
+
+	job = Jobs()
+
+	job.team_leader = 1 #session.query(User).filter_by(id=1).first()
+
+	job.job = "job deployment of residential modules 1 and 2"
+	job.work_size = 15
+
+	job.collabarators = "1 2" #session.query(User).filter_by(id=2).first(), session.query(User).filter_by(id=3).first()
+
+	job.is_finished = False
+
+	session.add(job)
+
+	session.commit()
+
 
 if __name__ == '__main__':
 	result = Session.global_init("./static/db/db.sqlite") # init BaseName
 	print("DB COONECTION :::: ", result)
 	if result == "OK":
+		print("Adding Users")
 		try:
 			addCaptainAndThreeRandomUsers()
 		except Exception as e:
-			print("Task \"Добавляем капитана\" cannot be completed => The same names in table users. Delete file or just check task.")
+			print(e)
+		print("Completed")
+
+		print("Add Job")
+		
+		firstArbeit()
+
+		print("Completed")
 
 		session = Session.create_session()
 		#app.run(host='localhost', port=8080)

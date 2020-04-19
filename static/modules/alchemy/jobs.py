@@ -5,8 +5,8 @@ import sqlalchemy.ext.declarative as dec
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+from .session import SqlAlchemyBase
 
-SqlAlchemyBase = dec.declarative_base()
 
 
 class Jobs(SqlAlchemyBase):
