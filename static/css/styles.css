@@ -112,6 +112,10 @@ input[type="radio"]:checked + label::before {
 	max-height: 100%;
 }
 
+.circled1{border-radius: 1em !important;}
+.circled2{border-radius: 2em !important;}
+.circled3{border-radius: 3em !important;}
+
 .form-control-file{
 	font-size: 75%;
 	width: 0px;
@@ -198,13 +202,6 @@ form .row .col *:focus{
 
 .row{
 	margin-bottom: 1.5em;
-}
-
-.login-form{
-	width: 40%;
-	margin: auto;
-	display: block;
-	margin-top: 5em;
 }
 
 .light-head{
@@ -298,6 +295,29 @@ a:hover svg.imager-200{
 	padding: 0.2em;
 }
 
+table.light-table th, td{
+	text-align: center;
+	border: 1px solid black;
+	padding: 0.5em;
+}
+
+table.light-table{
+	margin-top: 0.5em;
+}
+
+.table-head{
+	background-color: var(--dark);
+	color: var(--light);
+}
+
+.center-block{
+	display: block;
+	width: 80%;
+	margin:auto;
+	margin-bottom: 2em;
+	
+}
+
 .card{
 	min-width: 30%;
 	display: inline-block;
@@ -335,8 +355,38 @@ a:hover svg.imager-200{
 
 .bg-dark *{
 	color: var(--light) !important;
+	font-size: 100%;
 }
 
+.bg-dark .navbar-brand *{
+	font-size: 125%;
+}
+
+.bg-dark .navbar-brand h1{
+	font-size: 200%;
+}
+
+.bg-dark ul *{
+	font-size: 110%;
+}
+
+}
+
+.bg-dark .navbar-brand h1{
+	font-size: 200%;
+}
+
+.bg-dark ul *{
+	font-size: 110%;
+}
+
+.bg-dark ul li a.nav-link:hover{
+	border-bottom: 1px solid var(--light) !important;
+}
+
+.bg-dark ul li a.nav-link{
+	border-bottom: 1px solid var(--dark) !important;
+}
 
 .nav-item{
 	margin-left: 0.5em;

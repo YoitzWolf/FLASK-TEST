@@ -20,7 +20,8 @@ app.config.from_object(Config)
 login = flogin.LoginManager(app)
 courier = Courier()
 
-session = None
+global session
+session = 0
 
 @app.route('/')
 def main():
@@ -134,7 +135,7 @@ def no_such_page(error):
 	return flask.render_template("main.html", title="Error 404", name='Interntional Colonisation Agency', menu=menu, error=f"<h1>No such page!</h1><h5>Error: {error}</h5>")
 
 
-@app.route('/<string:planet>/test')
+@app.route('/missions/<string:planet>/test')
 def mars_test(planet=None):
 	courier.reloadBar(menu_activated="None", user=flogin.current_user.is_authenticated)
 	menu = courier.get_fullmenu()
@@ -142,7 +143,7 @@ def mars_test(planet=None):
 	
 	return flask.render_template("mission-base.html", title="Mission", menu=menu, planet=planet);
 
-@app.route('/<string:planet>/main')
+@app.route('/missions/<string:planet>/main')
 def mission_main(planet=None):
 	if planet is not None:
 		planet = planet.lower()
@@ -152,6 +153,30 @@ def mission_main(planet=None):
 		if planet: menu["menu"] += courier.get_BarLink_To(link=f"/{planet}/main", text=planet.title())
 		
 		return flask.render_template("mission-base.html", title="Mission", menu=menu, planet=planet);
+
+	else: return no_such_page(404)
+
+
+@app.route('/missions/<string:planet>/jobs')
+def mission_joblist(planet=None):
+	global session
+	if planet is not None:
+		planet = planet.lower()
+		courier.reloadBar(menu_activated="None", user=flogin.current_user.is_authenticated)
+		menu = courier.get_fullmenu()
+		menu["menu"] = courier.get_Home()
+		if planet: menu["menu"] += courier.get_BarLink_To(link=f"/{planet}/main", text=planet.title())
+
+		'''courier.get_TableBlocksFromList('''
+		jobs = courier.load_news(session, Jobs)
+		#print(jobs.user)
+		dct = {
+			"job" : "activity description",
+			("user.name", "user.surname") : "team leader", 
+			"work_size" : "work time",
+			"is_finished" : "is finished"
+		}
+		return flask.render_template("mission-news-base.html", title="Job list", menu=menu, planet=planet, news=jobs, header="Action #", head_field="id", tableset=dct);
 
 	else: return no_such_page(404)
 
@@ -215,7 +240,7 @@ def addCaptainAndThreeRandomUsers():
 	user.age = 21
 	user.position = "captain"
 	user.speciality = "research engineer"
-	user.adress = "module_1"
+	user.address = "module_1"
 	user.set_password("password")
 	user.email = "scott_chief@mars.org"
 	session.add(user)
@@ -226,7 +251,7 @@ def addCaptainAndThreeRandomUsers():
 	user.age = 24
 	user.position = "data_dog"
 	user.speciality = "dog"
-	user.adress = "Edward`s_bed"
+	user.address = "Edward`s_bed"
 	user.set_password("rhhaw!")
 	user.email = "best_e_mail_adress_you_never_forget@mars.org"
 	session.add(user)
@@ -237,7 +262,7 @@ def addCaptainAndThreeRandomUsers():
 	user.age = 13
 	user.position = "cool_hacker"
 	user.speciality = "programming"
-	user.adress = "module_1"
+	user.address = "module_1"
 	user.set_password("iamagirl")
 	user.email = "ediscool@mars.org"
 	session.add(user)
@@ -249,7 +274,7 @@ def addCaptainAndThreeRandomUsers():
 	user.age = 27
 	user.position = "cowboy"
 	user.speciality = "space_cowboy"
-	user.adress = "module_1"
+	user.address = "module_1"
 	user.set_password("swordfishII")
 	user.email = "see_you_space_cowboy@mars.org"
 	session.add(user)
@@ -264,25 +289,36 @@ def firstArbeit():
 
 	job = Jobs()
 
-	job.team_leader = 1 #session.query(User).filter_by(id=1).first()
+	user = session.query(User).filter(User.id==1).first()
 
 	job.job = "job deployment of residential modules 1 and 2"
 	job.work_size = 15
-
-	job.collabarators = "1 2" #session.query(User).filter_by(id=2).first(), session.query(User).filter_by(id=3).first()
-
+	job.collabarators = "1, 2" #session.query(User).filter_by(id=2).first(), session.query(User).filter_by(id=3).first()
 	job.is_finished = False
 
-	session.add(job)
+	user.jobs.append(job)
 
 	session.commit()
 
+def readColonists(rule={}):
+    session = Session.create_session()
+    res = session.query(User.id).filter( 
+        User.address == "module_1",
+        User.speciality.notlike('%ingeneer%'),
+        User.position.notlike('%ingeneer%')
+    )
+    for i in res: print(i[0])
+    session.commit()
+
+
 
 if __name__ == '__main__':
-	result = Session.global_init("./static/db/db.sqlite") # init BaseName
+	name = "./static/db/db.sqlite"
+	result = Session.global_init(name) # init BaseName
 	print("DB COONECTION :::: ", result)
 	if result == "OK":
 		print("Adding Users")
+		
 		try:
 			addCaptainAndThreeRandomUsers()
 		except Exception as e:
@@ -290,14 +326,15 @@ if __name__ == '__main__':
 		print("Completed")
 
 		print("Add Job")
-		
+
 		try:
 			firstArbeit()
 		except Exception as e:
 			print(e)
 
 		print("Completed")
-
+		
+		readColonists()
 		session = Session.create_session()
-		#app.run(host='localhost', port=8080)
+		app.run(host='localhost', port=8080)
 		session.commit()

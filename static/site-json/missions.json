@@ -2,7 +2,7 @@
 	"missions":[
 		{
 			"planet":"Mars",
-			"href":"/mars",
+			"href":"missions/mars",
 			"image":"https://pngimg.com/uploads/mars_planet/mars_planet_PNG36.png"
 		},
 

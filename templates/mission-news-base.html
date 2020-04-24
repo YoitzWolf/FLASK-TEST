@@ -1,0 +1,31 @@
+{% extends "mission-base.html" %}
+
+{% block mission_content %}
+	{% for item in news %}
+		<div class="center-block">
+			<h3>{{header}}{{item[head_field] }}</h3>
+			<table class='light-table'>
+				<tr class='table-head'>
+					{% for i in tableset %}
+					
+						<td>{{tableset[i] if not '.' in i else tableset[i.split('.')[0]][i.split('.')[1]] }}</td>
+						
+					{% endfor %}
+				</tr>
+				<tr class=''>
+					{% for i in tableset %}
+						{% if i is iterable and i is not string %}
+							<td>
+								{% for elem in i %}
+									{{ item[i][elem] if not '.' in elem else item[elem.split('.')[0]][elem.split('.')[1]] }}
+								{% endfor %}
+							</td>
+						{% else %}						
+							<td>{{item[i] if not '.' in i else item[i.split('.')[0]][i.split('.')[1]] }}</td>
+						{% endif %}	
+					{% endfor %}
+				</tr>
+			</table>
+		</div>
+	{% endfor %}
+{% endblock mission_content %}
