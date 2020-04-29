@@ -220,6 +220,8 @@ def logout():
 	flogin.logout_user()
 	return flask.redirect('/')
 
+#-----------------------------TEST----------------------------------
+
 def addRoot():
 	user = User()
 	user.name = "root"
@@ -293,7 +295,7 @@ def firstArbeit():
 
 	job.job = "job deployment of residential modules 1 and 2"
 	job.work_size = 15
-	job.collabarators = "1, 2" #session.query(User).filter_by(id=2).first(), session.query(User).filter_by(id=3).first()
+	job.collaborators = "1, 2" #session.query(User).filter_by(id=2).first(), session.query(User).filter_by(id=3).first()
 	job.is_finished = False
 
 	user.jobs.append(job)
@@ -317,6 +319,7 @@ if __name__ == '__main__':
 	result = Session.global_init(name) # init BaseName
 	print("DB COONECTION :::: ", result)
 	if result == "OK":
+		'''
 		print("Adding Users")
 		
 		try:
@@ -333,7 +336,7 @@ if __name__ == '__main__':
 			print(e)
 
 		print("Completed")
-		
+		'''
 		readColonists()
 		session = Session.create_session()
 		app.run(host='localhost', port=8080)

@@ -2,6 +2,23 @@
 import json
 import sys
 
+
+def createHtmlByDict(self, data, item, inside=None):
+	dict = data['item']
+
+	html = f"<dict['tag'] {' '.join(['{}={}'.format(x, '%DOC%'+dict['tag_attributes'][x]+'%DOC%') for x in dict['tag_attributes']])} >\n".replace('%DOC%', '"')
+	if inside is None and "inside" in dict:
+
+		if "insize-type" not in dict or dict["inside-type"] == "text":
+			html += dict['inside']
+
+		elif dict["inside-type"] == "html":
+			html += createHtmlByDict(data, dict['inside'])
+
+	html = f"</dict['tag']>"
+
+	return html
+
 def readMenu(adress, activated="None", user=False):
 	document = ''
 	userfield = ''
@@ -42,6 +59,10 @@ def readMenu(adress, activated="None", user=False):
 
 	return document, userfield
 
+def testJSONCompiler(adress):
+	with open(adress, "r") as read_file:
+		data = json.load(read_file)
+		return createHtmlByDict(data, "")
 
 if __name__ == '__main__':
 	print(readMenu("../site-json/top-menu.json", activated="Home"))

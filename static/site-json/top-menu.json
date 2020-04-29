@@ -62,6 +62,53 @@
 
 	"sign-menu": {
 		"autorized": {
+			"text": "Logout",
+			"tag": "li",
+			"tag_attributes": {
+				"id": "user",
+				"class": "nav-item"
+			},
+			
+			"link_attributes": {
+				"class": "btn info-button",
+				"href": "/logout"
+			}
+		},
+
+		"unautorized": {
+			"text": "Sign in",
+			"tag": "li",
+			"tag_attributes": {
+				"id": "sign-in",
+				"class": "nav-item"
+			},
+			
+			"link_attributes": {
+				"class": "btn info-button",
+				"href": "/login"
+			},
+
+			"inside": ["register"]
+		},
+
+		"register" : {
+
+			"text": "Registration",
+			"tag": "li",
+			"tag_attributes": {
+				"id": "register",
+				"class": "nav-item"
+			},
+			
+			"link_attributes": {
+				"class": "btn info-button",
+				"href": "/register"
+			}
+		}
+	},
+
+	"sign-menu-2": {
+		"autorized": {
 			"text": "{username}",
 			"tag": "li",
 			"tag_attributes": {
@@ -75,7 +122,7 @@
 			}
 		},
 
-		"unautorized": 		{
+		"unautorized": {
 			"text": "Sign in",
 			"tag": "li",
 			"tag_attributes": {
@@ -86,6 +133,23 @@
 			"link_attributes": {
 				"class": "btn info-button",
 				"href": "/sign-in"
+			},
+
+			"inside": ["register"]
+		},
+
+		"register" : {
+
+			"text": "Registration",
+			"tag": "li",
+			"tag_attributes": {
+				"id": "register",
+				"class": "nav-item"
+			},
+			
+			"link_attributes": {
+				"class": "btn info-button",
+				"href": "/register"
 			}
 		}
 	}

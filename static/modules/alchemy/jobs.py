@@ -23,7 +23,7 @@ class Jobs(SqlAlchemyBase):
     job = sqlalchemy.Column(sqlalchemy.String)
     work_size = sqlalchemy.Column(sqlalchemy.Integer)
 
-    collabarators = sqlalchemy.Column(sqlalchemy.String)
+    collaborators = sqlalchemy.Column(sqlalchemy.String)
 
     start_date = sqlalchemy.Column(
         sqlalchemy.DateTime, default=datetime.datetime.now)
@@ -31,3 +31,6 @@ class Jobs(SqlAlchemyBase):
         sqlalchemy.DateTime, default=datetime.datetime.now)
 
     is_finished = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+
+    def __repr__(self):
+        return f'<Job> {self.job} id = {self.id}'
