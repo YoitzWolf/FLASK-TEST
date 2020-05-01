@@ -182,11 +182,11 @@ def mission_joblist(planet=None):
 
 #--------------------------------LOGIN-------------------------------------
 
-@login.user_loader
+#@login.user_loader
 def load_user(id):
 	return session.query(User).filter( User.id==int(id) ).first()
 
-@app.route('/login', methods=['GET', 'POST'])
+#@app.route('/login', methods=['GET', 'POST'])
 def login():
 	if flogin.current_user.is_authenticated:
 		return flask.redirect('/')
@@ -215,7 +215,7 @@ def login():
 			
 		return flask.redirect("/")
 
-@app.route('/logout')
+#@app.route('/logout')
 def logout():
 	flogin.logout_user()
 	return flask.redirect('/')
@@ -337,7 +337,11 @@ if __name__ == '__main__':
 
 		print("Completed")
 		'''
-		readColonists()
+		# readColonists()
 		session = Session.create_session()
+		import services.login_service.service as Login
+		Login.setApp(app)
+		app.register_blueprint(Login.getBlueprint())
+
 		app.run(host='localhost', port=8080)
 		session.commit()

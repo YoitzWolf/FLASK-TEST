@@ -1,20 +1,59 @@
 @font-face {
 	font-family: "Oswald Regular";
 	local: "Oswald";
-	src: url("../fonts/Oswald-Regular.ttf");
+	src: url("../fonts/Oswald/Oswald-Regular.ttf");
 }
 
 @font-face {
 	font-family: "Oswald Bold";
 	local: "Oswald";
-	src: url("../fonts/Oswald-Bold.ttf");
+	src: url("../fonts/Oswald/Oswald-Bold.ttf");
 }
 
 @font-face {
 	font-family: "Oswald Light";
 	local: "Oswald";
-	src: url("../fonts/Oswald-Light.ttf");
+	src: url("../fonts/Oswald/Oswald-Light.ttf");
 }
+
+/*
+@font-face {
+	font-family: "Main Regular";
+	local: "Oswald";
+	src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Main Bold";
+	local: "Oswald";
+	src: url("../fonts/Open_Sans/OpenSans-Bold.ttf");
+}
+
+@font-face {
+	font-family: "Main Light";
+	local: "Oswald";
+	src: url("../fonts/Open_Sans/OpenSans-Light.ttf");
+}
+*/
+
+@font-face {
+	font-family: "Main Regular";
+	local: "Oswald";
+	src: url("../fonts/Lato/Lato-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Main Bold";
+	local: "Oswald";
+	src: url("../fonts/Lato/Lato-Black.ttf");
+}
+
+@font-face {
+	font-family: "Main Light";
+	local: "Oswald";
+	src: url("../fonts/Lato/Lato-Light.ttf");
+}
+
 :root{
 	--light: #f8f9fa;
 	--dark: #000;
@@ -31,11 +70,11 @@
 */
 
 body{
-	font-family: Oswald Regular;
+	font-family: Main Regular;
 	background-color: var(--light);
 }
 
-*{transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out !important; font-family: Oswald Regular, Sans-Serif;}
+*{transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out !important; font-family: Main Regular, Sans-Serif;}
 
 a{cursor: pointer;}
 svg{transition: fill .25s ease-in-out !important;}
@@ -218,13 +257,29 @@ form .row .col *:focus{
 	fill: var(--light);
 }
 
+.text-href{
+	color: var(--blue) !important;
+	font-size: 100%;
+	font-family: Main Bold;
+}
+
+.text-href:hover{
+	color: var(--dark-blue) !important;
+	text-decoration: underline !important;
+}
+
 .header{
 	box-shadow: 0 0 5px var(--dark);
-	font-family: Oswald Bold;
+	font-family: Main Bold !important;
 	position: sticky;
 }
 
+.header .navbar-brand{
+	font-family: Main Bold !important;
+}
+
 .info-button{
+	font-size: 1.2rem;
 	background-color: var(--blue);
 	border: none;
 	color: var(--light) !important;
@@ -318,6 +373,10 @@ table.light-table{
 	
 }
 
+.inline{
+	display: inline-block !important;
+}
+
 .card{
 	min-width: 30%;
 	display: inline-block;
@@ -330,7 +389,8 @@ table.light-table{
 }
 
 .card-header{
-	font-family: Oswald Bold;
+	font-family: Main Bold;
+	font-size: 125%;
 	background-color: var(--dark);
 	color: var(--light);
 }

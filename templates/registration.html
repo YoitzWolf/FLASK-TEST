@@ -1,0 +1,140 @@
+{% extends "main.html" %}
+
+{% block bar %}
+		<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light header" id="topBar">
+
+			<a class="navbar-brand" href="/">Interntional Colonisation Agency</a>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto ">
+					{{ menu["menu"]|safe }}
+				</ul>
+			</div>
+
+		</nav>
+{% endblock bar %}
+
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+	<div class="container">
+		<div class="card" style="padding: 1em; width: 70%; min-width: 270px; margin:auto; display: block; margin-top: 10%; padding-bottom: 0px;">
+			<form class="font-150 login-form" method="post" enctype="multipart/form-data">
+
+				<div class="row">
+					<div class="col"><label>Registration</label></div>
+
+					<div class="col" style="text-align: right;">
+						<a class="text-href" style='font-size: 1rem !important;' href="/login">No, I have accaunt</a>
+					</div>
+				</div>
+				
+
+				<div class="row">
+
+					<div class="col">
+						<input id="name" name="name" type="text" class="form-control" placeholder="name" value="" required="">
+						<div class="invalid-feedback">
+								Please, enter the name!
+						</div>
+					</div>
+
+					<div class="col">
+						<input id="surname" name="surname" type="text" class="form-control" placeholder="surname" value="" required="">
+						<div class="invalid-feedback">
+								Please, enter the surname!
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+						<div class="col">	
+							<input id="login" name="login" type="login" class="form-control" placeholder="enter your e-mail" value="" required="">
+							<div class="invalid-feedback">
+								E-Mail is already used
+							</div>
+						</div>
+						<div class="col custom-checkbox" style="text-align: right; vertical-align: center; margin-top: 0.1em;">
+				    		<input id="remember_me" type="checkbox" class="checkbox" name="remember_me"/>
+							<label for="remember_me" style="font-size: 1rem">I would like to have messages to my e-mail</label>
+						</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<input id="password" name="password" type="password" class="form-control" placeholder="password" value="" required="">
+						<div class="invalid-feedback">
+								Please, enter the password!
+						</div>
+					</div>
+					<div class="col">
+						<input id="password-rep" name="password-rep" type="password-rep" class="form-control" placeholder=" repeat password" value="" required="">
+						<div class="invalid-feedback">
+								Passwords are different!
+						</div>
+					</div>
+				</div>
+
+				<div class="row"><label class="col">Info about you</label></div>
+
+				<div style="text-align: right; font-size: 75%">
+					<div class="row">
+						<label class="col">Age</label>
+						<div class="col">
+							<input id="age" name="age" type="text" class="form-control" placeholder="age" value="" required="">
+							<div class="invalid-feedback">
+									Please, enter it!
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<label class="col">Position</label>
+						<div class="col">
+							<input id="pos" name="pos" type="text" class="form-control" placeholder="position" value="" required="">
+							<div class="invalid-feedback">
+									Please, enter it!
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<label class="col">Speciality</label>
+						<div class="col">
+							<input id="Speciality" name="Speciality" type="text" class="form-control" placeholder="speciality" value="" required="">
+							<div class="invalid-feedback">
+									Please, enter it!
+							</div>
+						</div>
+					</div>				
+
+					<div class="row">
+						<label class="col">Adress</label>
+						<div class="col">
+							<input id="Adress" name="Adress" type="text" class="form-control" placeholder="adress" value="" required="">
+							<div class="invalid-feedback">
+									Please, enter it!
+							</div>
+						</div>
+					</div>	
+
+					<div class="row">
+						
+						<div class="col">
+							<button id="commit" class="col btn info-button" type="submit">
+								Commit
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+		
+
+	</div>
+	<br><br><br>
+{% endblock %}
